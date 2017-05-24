@@ -39,7 +39,25 @@ $(document).ready(function() {
 
           });
       });
-    });  
+    });
+    
+    $("#getlocation").click(function() {
+      // Geolocation function from https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation
+      if (navigator.geolocation) {
+          console.log('Geolocation is supported by this browser');
+          navigator.geolocation.getCurrentPosition(function(position) {
+            console.log('Getting latitude and longitude');
+            $("#latitude").val(position.coords.latitude);
+            $("#longitude").val(position.coords.longitude);
+            console.log(location.coords.accuracy);
+          },
+          function(error) {
+            console.log('An error occured. Error code: '+ error.code);
+          });
+      } else { 
+          console.log("Geolocation is not supported by this browser.");
+      }
+    });
     
     function isNumber(n) {
       return !isNaN(parseFloat(n)) && isFinite(n);
