@@ -4,8 +4,6 @@ $(document).ready(function() {
       var homeLongitude = $("#longitude").val();
       
       var peaks = geodata.peaks;
-  
-      var peaks;
       
       $('.peakrow').remove();
 
@@ -19,6 +17,8 @@ $(document).ready(function() {
       console.log([homeLatitude, homeLongitude]);
 
       var counter = 1;
+      
+      var orderedPeaks = new Array();
 
       $.each(peaks, function() {
         var latitude = this.Latitude;
@@ -31,12 +31,26 @@ $(document).ready(function() {
 
         if (distance < 100000 && distance > 0) {
           var compassBearing = bearing(homeLatitude, homeLongitude, latitude, longitude);
-          $('#peakslist tr:last').after('<tr class="peakrow"><td>'+counter+'</td><td>'+this["Hill Name"]+'</td><td>'+distance+'</td><td>'+compassBearing+'</td></tr>');
-
-          counter++;
+          
+          orderedPeaks.push({
+            "Name": this["Hill Name"],
+            "Distance": distance,
+            "Bearing": compassBearing,
+          });
+          
         }
-
       });
+      
+      orderedPeaks.sort(function(a, b) {
+        return a.Bearing - b.Bearing;
+      });
+      
+      $.each(orderedPeaks, function() {
+        $('#peakslist tr:last').after('<tr class="peakrow"><td>'+counter+'</td><td>'+this.Name+'</td><td>'+this.Distance+'</td><td>'+this.Bearing+'</td></tr>');
+      });
+      
+      console.log(orderedPeaks);
+      
     });
     
     $("#getlocation").click(function() {
