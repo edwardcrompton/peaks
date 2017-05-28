@@ -2,6 +2,8 @@ $(document).ready(function() {
     $("#submitposition").click(function() {
       var homeLatitude = $("#latitude").val();
       var homeLongitude = $("#longitude").val();
+      
+      var peaks = geodata.peaks;
   
       var peaks;
       
@@ -15,29 +17,25 @@ $(document).ready(function() {
       }
       
       console.log([homeLatitude, homeLongitude]);
-      
-      $.getJSON('hewitts.json', function(data) {
-          peaks = data.peaks;
-          
-          var counter = 1;
 
-          $.each(peaks, function() {
-            var latitude = this.Latitude;
-            var longitude = this.Longitude;
+      var counter = 1;
 
-            var a = { latitude: homeLatitude, longitude: homeLongitude }
-            var b = { latitude: latitude, longitude: longitude }
+      $.each(peaks, function() {
+        var latitude = this.Latitude;
+        var longitude = this.Longitude;
 
-            var distance = haversineDistance(a, b);
+        var a = { latitude: homeLatitude, longitude: homeLongitude }
+        var b = { latitude: latitude, longitude: longitude }
 
-            if (distance < 100000 && distance > 0) {
-              var compassBearing = bearing(homeLatitude, homeLongitude, latitude, longitude);
-              $('#peakslist tr:last').after('<tr class="peakrow"><td>'+counter+'</td><td>'+this["Hill Name"]+'</td><td>'+distance+'</td><td>'+compassBearing+'</td></tr>');
+        var distance = haversineDistance(a, b);
 
-              counter++;
-            }
+        if (distance < 100000 && distance > 0) {
+          var compassBearing = bearing(homeLatitude, homeLongitude, latitude, longitude);
+          $('#peakslist tr:last').after('<tr class="peakrow"><td>'+counter+'</td><td>'+this["Hill Name"]+'</td><td>'+distance+'</td><td>'+compassBearing+'</td></tr>');
 
-          });
+          counter++;
+        }
+
       });
     });
     
