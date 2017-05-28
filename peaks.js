@@ -28,6 +28,7 @@ $(document).ready(function() {
         var b = { latitude: latitude, longitude: longitude }
 
         var distance = haversineDistance(a, b);
+        var prominence = this.Height / distance;
 
         if (distance < 100000 && distance > 0) {
           var compassBearing = bearing(homeLatitude, homeLongitude, latitude, longitude);
@@ -36,20 +37,19 @@ $(document).ready(function() {
             "Name": this["Hill Name"],
             "Distance": distance,
             "Bearing": compassBearing,
+            "Prominence": prominence,
           });
           
         }
       });
       
       orderedPeaks.sort(function(a, b) {
-        return a.Bearing - b.Bearing;
+        return b.Prominence - a.Prominence;
       });
       
       $.each(orderedPeaks, function() {
-        $('#peakslist tr:last').after('<tr class="peakrow"><td>'+counter+'</td><td>'+this.Name+'</td><td>'+this.Distance+'</td><td>'+this.Bearing+'</td></tr>');
+        $('#peakslist tr:last').after('<tr class="peakrow"><td>'+this.Name+'</td><td>'+this.Distance+'</td><td>'+this.Bearing+'</td></tr>');
       });
-      
-      console.log(orderedPeaks);
       
     });
     
