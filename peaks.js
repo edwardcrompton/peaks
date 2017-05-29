@@ -61,13 +61,13 @@ $(document).ready(function() {
             console.log('Getting latitude and longitude');
             $("#latitude").val(position.coords.latitude);
             $("#longitude").val(position.coords.longitude);
-            console.log(location.coords.accuracy);
+            $("#notices").html("Using your location with an accuracy of " + position.coords.accuracy + "m.");
           },
           function(error) {
-            console.log('An error occured. Error code: '+ error.code);
+            $("#notices").html("An error occured. Error code: " + error.code);
           });
-      } else { 
-          console.log("Geolocation is not supported by this browser.");
+      } else {
+          $("#notices").html("Geolocation is not supported by this browser.");
       }
     });
     
@@ -102,7 +102,7 @@ $(document).ready(function() {
       var f = squared(sin(dLat / 2.0)) + cos(toRad(aLat)) * cos(toRad(bLat)) * squared(sin(dLon / 2.0))
       var c = 2 * atan2(sqrt(f), sqrt(1 - f))
 
-      return R * c
+      return Math.round(R * c / 1000);
     }
     
     // Bearing calculation from https://stackoverflow.com/questions/11415106/issue-with-calcuating-compass-bearing-between-two-gps-coordinates#11415329
@@ -111,7 +111,7 @@ $(document).ready(function() {
         var y = Math.sin(dLon) * Math.cos(lat2);
         var x = Math.cos(lat1)*Math.sin(lat2) - Math.sin(lat1)*Math.cos(lat2)*Math.cos(dLon);
         var brng = toDegree(Math.atan2(y, x));
-        return 360 - ((brng + 360) % 360);
+        return Math.round(360 - ((brng + 360) % 360));
     }
     
 });
