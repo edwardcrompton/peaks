@@ -1,6 +1,5 @@
 var cacheName = 'peaksPWA';
 var filesToCache = [
-  '/',
   'index.html',
   'jquery.min.js',
   'peaks.js',
