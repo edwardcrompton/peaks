@@ -118,4 +118,10 @@ $(document).ready(function() {
         return Math.round(360 - ((brng + 360) % 360));
     }
     
+    if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+             .register('./service-worker.js')
+             .then(function() { console.log('Service Worker Registered'); });
+    }
+    
 });
