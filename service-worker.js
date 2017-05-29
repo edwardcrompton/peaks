@@ -1,10 +1,10 @@
 var cacheName = 'peaksPWA';
 var filesToCache = [
   '/',
-  '/index.html',
-  '/jquery.min.js',
-  '/peaks.js',
-  '/geodata.js',
+  'index.html',
+  'jquery.min.js',
+  'peaks.js',
+  'geodata.js',
 ];
 
 self.addEventListener('install', function(e) {
