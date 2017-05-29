@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    $(".position").change(function() {
+      $("#notices").html("Using a manually entered position.");
+    });
+  
     $("#submitposition").click(function() {
       var homeLatitude = $("#latitude").val();
       var homeLongitude = $("#longitude").val();
@@ -30,7 +34,7 @@ $(document).ready(function() {
         var distance = haversineDistance(a, b);
         var prominence = this.Height / distance;
 
-        if (distance < 100000 && distance > 0) {
+        if (distance < 100 && distance > 0) {
           var compassBearing = bearing(homeLatitude, homeLongitude, latitude, longitude);
           
           orderedPeaks.push({
@@ -65,7 +69,7 @@ $(document).ready(function() {
           },
           function(error) {
             $("#notices").html("An error occured. Error code: " + error.code);
-          });
+          }, { enableHighAccuracy: true });
       } else {
           $("#notices").html("Geolocation is not supported by this browser.");
       }
