@@ -12,3 +12,9 @@ Ideas for further development
 - Create a graphic to show the distances and bearings of the peaks which can be used with a compass to orientate the mobile device.
 - Use the mobile device's inbuilt compass to align the graphic.
 - Present the names of the peaks on a camera overlay for an augmented reality experience.
+
+Current progress
+----------------
+
+Attempting to register a service worker in order to cache assets when offline. Currently when
+page is refreshed offline we get the downosaur shown instead of the app shell.
