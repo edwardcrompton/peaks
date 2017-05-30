@@ -1,13 +1,13 @@
-$(document).ready(function () {
+$(document).ready((function () {
   // Haversine distance calculation from https://github.com/dcousens/haversine-distance
-  var atan2 = Math.atan2;
-  var cos = Math.cos;
-  var sin = Math.sin;
-  var sqrt = Math.sqrt;
-  var PI = Math.PI;
+  const atan2 = Math.atan2;
+  const cos = Math.cos;
+  const sin = Math.sin;
+  const sqrt = Math.sqrt;
+  const PI = Math.PI;
 
   // (mean) radius of Earth (meters)
-  var R = 6378137;
+  const R = 6378137;
 
   function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
@@ -25,26 +25,26 @@ $(document).ready(function () {
 
   // https://stackoverflow.com/questions/1502590/calculate-distance-between-two-points-in-google-maps-v3
   function haversineDistance(a, b) {
-    var aLat = a.latitude || a.lat;
-    var bLat = b.latitude || b.lat;
-    var aLng = a.longitude || a.lng;
-    var bLng = b.longitude || b.lng;
+    const aLat = a.latitude || a.lat;
+    const bLat = b.latitude || b.lat;
+    const aLng = a.longitude || a.lng;
+    const bLng = b.longitude || b.lng;
 
-    var dLat = toRad(bLat - aLat);
-    var dLon = toRad(bLng - aLng);
+    const dLat = toRad(bLat - aLat);
+    const dLon = toRad(bLng - aLng);
 
-    var f = squared(sin(dLat / 2.0)) + cos(toRad(aLat)) * cos(toRad(bLat)) * squared(sin(dLon / 2.0));
-    var c = 2 * atan2(sqrt(f), sqrt(1 - f));
+    const f = squared(sin(dLat / 2.0)) + cos(toRad(aLat)) * cos(toRad(bLat)) * squared(sin(dLon / 2.0));
+    const c = 2 * atan2(sqrt(f), sqrt(1 - f));
 
     return Math.round((R * c) / 1000);
   }
 
   // Bearing calculation from https://stackoverflow.com/questions/11415106/issue-with-calcuating-compass-bearing-between-two-gps-coordinates#11415329
   function bearing(lat1, lng1, lat2, lng2) {
-    var dLon = (lng2 - lng1);
-    var y = Math.sin(dLon) * Math.cos(lat2);
-    var x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
-    var brng = toDegree(Math.atan2(y, x));
+    const dLon = (lng2 - lng1);
+    const y = Math.sin(dLon) * Math.cos(lat2);
+    const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+    const brng = toDegree(Math.atan2(y, x));
     return Math.round(360 - ((brng + 360) % 360));
   }
 
@@ -53,12 +53,12 @@ $(document).ready(function () {
   });
 
   $('#submitposition').click(function () {
-    var homeLatitude = $('#latitude').val();
-    var homeLongitude = $('#longitude').val();
+    let homeLatitude = $('#latitude').val();
+    let homeLongitude = $('#longitude').val();
 
-    var peaks = geodata.peaks;
+    const peaks = geodata.peaks;
 
-    var orderedPeaks = new Array();
+    const orderedPeaks = [];
 
     $('.peakrow').remove();
 
@@ -71,16 +71,16 @@ $(document).ready(function () {
 
 
     $.each(peaks, function () {
-      var latitude = this.Latitude;
-      var longitude = this.Longitude;
+      const latitude = this.Latitude;
+      const longitude = this.Longitude;
 
-      var a = { latitude: homeLatitude, longitude: homeLongitude };
-      var b = { latitude: latitude, longitude: longitude };
+      const a = { latitude: homeLatitude, longitude: homeLongitude };
+      const b = { latitude: latitude, longitude: longitude };
 
-      var distance = haversineDistance(a, b);
-      var prominence = this.Height / distance;
+      const distance = haversineDistance(a, b);
+      const prominence = this.Height / distance;
 
-      var compassBearing;
+      let compassBearing;
 
       if (distance < 100 && distance > 0) {
         compassBearing = bearing(homeLatitude, homeLongitude, latitude, longitude);
