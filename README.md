@@ -5,6 +5,8 @@ Shows the distance and bearing of peaks that can be seen from a particular latit
 
 Designed run off line as a Progressive Web App on a mobile device.
 
+See https://edwardcrompton.github.io/peaks
+
 Ideas for further development
 -----------------------------
 
