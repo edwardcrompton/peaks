@@ -3,7 +3,7 @@ Peaks
 
 Shows the distance and bearing of peaks that can be seen from a particular latitude and longitude. The results are ordered by the ratio of the height to the peak to its distance away.
 
-Designed to be downloaded and run offline on a mobile device.
+Designed run off line as a Progressive Web App on a mobile device.
 
 Ideas for further development
 -----------------------------
