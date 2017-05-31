@@ -24,7 +24,6 @@ self.addEventListener('fetch', function(event) {
       .then(function(response) {
         if (response) {
           // cache hit: return cached result
-          document.append('<span>Fetched from cache</span>')
           return response;
         }
 
