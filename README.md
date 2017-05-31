@@ -18,3 +18,10 @@ Current progress
 
 Attempting to register a service worker in order to cache assets when offline. Currently when
 page is refreshed offline we get the downosaur shown instead of the app shell.
+
+Consider using RequireJS to provide a more module structure with multiple js files.
+
+Try building in compass orientation so that we can see a graphical pointer to all
+the mountains.
+
+Work out how to show few mountains, and which to choose for the list.
