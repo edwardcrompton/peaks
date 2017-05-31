@@ -33,7 +33,7 @@ $(document).ready(() => {
     const dLat = toRad(bLat - aLat);
     const dLon = toRad(bLng - aLng);
 
-    const f = squared(sin(dLat / 2.0)) + cos(toRad(aLat)) * cos(toRad(bLat)) * squared(sin(dLon / 2.0));
+    const f = squared(sin(dLat / 2.0)) + (cos(toRad(aLat)) * cos(toRad(bLat)) * squared(sin(dLon / 2.0)));
     const c = 2 * atan2(sqrt(f), sqrt(1 - f));
 
     return Math.round((R * c) / 1000);
@@ -43,7 +43,7 @@ $(document).ready(() => {
   function bearing(lat1, lng1, lat2, lng2) {
     const dLon = (lng2 - lng1);
     const y = Math.sin(dLon) * Math.cos(lat2);
-    const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+    const x = (Math.cos(lat1) * Math.sin(lat2)) - (Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon));
     const brng = toDegree(Math.atan2(y, x));
     return Math.round(360 - ((brng + 360) % 360));
   }
@@ -73,7 +73,7 @@ $(document).ready(() => {
       const longitude = element.Longitude;
 
       const a = { latitude: homeLatitude, longitude: homeLongitude };
-      const b = { latitude: latitude, longitude: longitude };
+      const b = { latitude, longitude };
 
       const distance = haversineDistance(a, b);
       const prominence = element.Height / distance;
@@ -94,7 +94,12 @@ $(document).ready(() => {
 
     orderedPeaks.sort((a, b) => b.Prominence - a.Prominence);
 
-    $.each(orderedPeaks, (index, element) => $('#peakslist tr:last').after('<tr class="peakrow"><td>' + element.Name + '</td><td>' + element.Distance + '</td><td>' + element.Bearing + '</td></tr>'));
+    $.each(orderedPeaks, (index, element) => $('#peakslist tr:last').after(
+      `<tr class="peakrow">
+        <td>${element.Name}</td>
+        <td>${element.Distance}</td>
+        <td>${element.Bearing}</td>
+      </tr>`));
   });
 
   $('#getlocation').click(() => {
@@ -103,10 +108,10 @@ $(document).ready(() => {
       navigator.geolocation.getCurrentPosition((position) => {
         $('#latitude').val(position.coords.latitude);
         $('#longitude').val(position.coords.longitude);
-        $('#notices').html('Using your location with an accuracy of ' + position.coords.accuracy + 'm.');
+        $('#notices').html(`Using your location with an accuracy of ${position.coords.accuracy}m.`);
       },
       (error) => {
-        $('#notices').html('An error occured. Error code: ' + error.code);
+        $('#notices').html(`An error occured. Error code: ${error.code}`);
       }, { enableHighAccuracy: true });
     }
     else {
