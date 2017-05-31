@@ -16,4 +16,20 @@ self.addEventListener('install', function(e) {
   );
 });
 
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    // try to find corresponding response in the cache
+    caches.match(event.request)
+      .then(function(response) {
+        if (response) {
+          // cache hit: return cached result
+          return response;
+        }
+
+        // not found: fetch resource from the server
+        return fetch(event.request);
+      })
+  );
+});
+
 
