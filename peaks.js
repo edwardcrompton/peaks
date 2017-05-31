@@ -33,7 +33,9 @@ $(document).ready(() => {
     const dLat = toRad(bLat - aLat);
     const dLon = toRad(bLng - aLng);
 
-    const f = squared(sin(dLat / 2.0)) + (cos(toRad(aLat)) * cos(toRad(bLat)) * squared(sin(dLon / 2.0)));
+    const f = squared(sin(dLat / 2.0)) + (
+      cos(toRad(aLat)) * cos(toRad(bLat)) * squared(sin(dLon / 2.0))
+    );
     const c = 2 * atan2(sqrt(f), sqrt(1 - f));
 
     return Math.round((R * c) / 1000);
@@ -43,14 +45,16 @@ $(document).ready(() => {
   function bearing(lat1, lng1, lat2, lng2) {
     const dLon = (lng2 - lng1);
     const y = Math.sin(dLon) * Math.cos(lat2);
-    const x = (Math.cos(lat1) * Math.sin(lat2)) - (Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon));
+    const x = (Math.cos(lat1) * Math.sin(lat2)) - (
+      Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon)
+    );
     const brng = toDegree(Math.atan2(y, x));
     return Math.round(360 - ((brng + 360) % 360));
   }
 
   $('.position').change(() => $('#notices').html('Using a manually entered position.'));
 
-  $('#submitposition').click(function () {
+  $('#submitposition').click(() => {
     let homeLatitude = $('#latitude').val();
     let homeLongitude = $('#longitude').val();
 
@@ -66,7 +70,6 @@ $(document).ready(() => {
       $('#latitude').val(homeLatitude);
       $('#longitude').val(homeLongitude);
     }
-
 
     $.each(peaks, (index, element) => {
       const latitude = element.Latitude;
