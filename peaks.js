@@ -1,4 +1,4 @@
-$(document).ready((function () {
+$(document).ready( function () {
   // Haversine distance calculation from https://github.com/dcousens/haversine-distance
   const atan2 = Math.atan2;
   const cos = Math.cos;
