@@ -48,9 +48,7 @@ $(document).ready( function () {
     return Math.round(360 - ((brng + 360) % 360));
   }
 
-  $('.position').change(function () {
-    $('#notices').html('Using a manually entered position.');
-  });
+  $('.position').change(() => $('#notices').html('Using a manually entered position.'));
 
   $('#submitposition').click(function () {
     let homeLatitude = $('#latitude').val();
@@ -70,15 +68,15 @@ $(document).ready( function () {
     }
 
 
-    $.each(peaks, function () {
-      const latitude = this.Latitude;
-      const longitude = this.Longitude;
+    $.each(peaks, (index, element) => {
+      const latitude = element.Latitude;
+      const longitude = element.Longitude;
 
       const a = { latitude: homeLatitude, longitude: homeLongitude };
       const b = { latitude: latitude, longitude: longitude };
 
       const distance = haversineDistance(a, b);
-      const prominence = this.Height / distance;
+      const prominence = element.Height / distance;
 
       let compassBearing;
 
@@ -86,7 +84,7 @@ $(document).ready( function () {
         compassBearing = bearing(homeLatitude, homeLongitude, latitude, longitude);
 
         orderedPeaks.push({
-          Name: this['Hill Name'],
+          Name: element['Hill Name'],
           Distance: distance,
           Bearing: compassBearing,
           Prominence: prominence,
@@ -94,24 +92,20 @@ $(document).ready( function () {
       }
     });
 
-    orderedPeaks.sort(function (a, b) {
-      return b.Prominence - a.Prominence;
-    });
+    orderedPeaks.sort((a, b) => b.Prominence - a.Prominence);
 
-    $.each(orderedPeaks, function () {
-      $('#peakslist tr:last').after('<tr class="peakrow"><td>' + this.Name + '</td><td>' + this.Distance + '</td><td>' + this.Bearing + '</td></tr>');
-    });
+    $.each(orderedPeaks, (index, element) => $('#peakslist tr:last').after('<tr class="peakrow"><td>' + element.Name + '</td><td>' + element.Distance + '</td><td>' + element.Bearing + '</td></tr>'));
   });
 
-  $('#getlocation').click(function () {
+  $('#getlocation').click(() => {
     // Geolocation function from https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
+      navigator.geolocation.getCurrentPosition((position) => {
         $('#latitude').val(position.coords.latitude);
         $('#longitude').val(position.coords.longitude);
         $('#notices').html('Using your location with an accuracy of ' + position.coords.accuracy + 'm.');
       },
-      function (error) {
+      (error) => {
         $('#notices').html('An error occured. Error code: ' + error.code);
       }, { enableHighAccuracy: true });
     }
