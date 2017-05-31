@@ -1,10 +1,15 @@
+/**
+ * Service Worker for installing the app and fetching cached assets offline.
+ * https://www.sitepoint.com/offline-web-apps-service-workers-pouchdb/
+ */
+
 var cacheName = 'peaksPWA';
 var filesToCache = [
   '/',
   'index.html',
-  'jquery.min.js',
-  'peaks.js',
-  'geodata.js',
+  'js/jquery.min.js',
+  'js/app.js',
+  'js/geodata.js',
 ];
 
 self.addEventListener('install', function(e) {

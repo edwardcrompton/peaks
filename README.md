@@ -16,8 +16,9 @@ Ideas for further development
 Current progress
 ----------------
 
-Attempting to register a service worker in order to cache assets when offline. Currently when
-page is refreshed offline we get the downosaur shown instead of the app shell.
+Service workers appear to work to cache and retrieve assets offline. Consider
+extending to automatically fetch new versions of assets:
+https://developers.google.com/web/fundamentals/getting-started/codelabs/your-first-pwapp/
 
 Consider using RequireJS to provide a more module structure with multiple js files.
 
