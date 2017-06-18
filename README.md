@@ -18,8 +18,19 @@ Ideas for further development
 Current progress
 ----------------
 
+<<<<<<< HEAD
 Attempting to register a service worker in order to cache assets when offline. Currently when
 page is refreshed offline we get the downosaur shown instead of the app shell.
+=======
+There seems to be inaccuracies in the bearings as compared to those calculated 
+manually on an OS map, and at http://www.movable-type.co.uk/scripts/latlong.html
+it might be better to use the libraries here https://github.com/chrisveness/geodesy.
+These are the libraries that the moveabletype link uses. There's an Npm module.
+
+Service workers appear to work to cache and retrieve assets offline. Consider
+extending to automatically fetch new versions of assets:
+https://developers.google.com/web/fundamentals/getting-started/codelabs/your-first-pwapp/
+>>>>>>> gh-pages
 
 Consider using RequireJS to provide a more module structure with multiple js files.
 
@@ -27,4 +38,3 @@ Try building in compass orientation so that we can see a graphical pointer to al
 the mountains.
 
 Work out how to show few mountains, and which to choose for the list.
-=======

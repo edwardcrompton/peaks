@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/geodata.js"></script>
+  <script src="js/app.js"></script>
+  <title>Peaks</title>
+</head>
+
+<body>
+
+  <form>
+    Latitude: <input type="text" id="latitude" class="position">
+    <br>
+    Longitude: <input type="text" id="longitude" class="position">
+    <br>
+    <span id="notices"></span>
+    <br>
+    
+    <input type="button" id="getlocation" value="Use your location">
+    <input type="button" id="submitposition" value="Go">
+  </form>
+  
+  <table id="peakslist">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Distance (km)</td>
+        <td>Bearing (degrees)</td>
+      </tr>
+    </thead>
+    <tr></tr>
+    
+  </table>  
+  
+</body>
