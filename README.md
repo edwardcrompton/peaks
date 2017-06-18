@@ -16,6 +16,11 @@ Ideas for further development
 Current progress
 ----------------
 
+There seems to be inaccuracies in the bearings as compared to those calculated 
+manually on an OS map, and at http://www.movable-type.co.uk/scripts/latlong.html
+it might be better to use the libraries here https://github.com/chrisveness/geodesy.
+These are the libraries that the moveabletype link uses. There's an Npm module.
+
 Service workers appear to work to cache and retrieve assets offline. Consider
 extending to automatically fetch new versions of assets:
 https://developers.google.com/web/fundamentals/getting-started/codelabs/your-first-pwapp/
