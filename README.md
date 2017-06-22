@@ -16,10 +16,9 @@ Ideas for further development
 Current progress
 ----------------
 
-There seems to be inaccuracies in the bearings as compared to those calculated 
-manually on an OS map, and at http://www.movable-type.co.uk/scripts/latlong.html
-it might be better to use the libraries here https://github.com/chrisveness/geodesy.
-These are the libraries that the moveabletype link uses. There's an Npm module.
+Now using the library https://github.com/chrisveness/geodesy as a git submodule.
+Hopefully this increases the accuracy of the bearings. Test with OS coordinates.
+http://www.movable-type.co.uk/scripts/latlong.html
 
 Service workers appear to work to cache and retrieve assets offline. Consider
 extending to automatically fetch new versions of assets:
