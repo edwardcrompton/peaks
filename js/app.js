@@ -39,16 +39,16 @@ $(document).ready(() => {
       const homePoint = new LatLon(homeLatitude, homeLongitude);
       const awayPoint = new LatLon(latitude, longitude);
 
-      const distance = homePoint.distanceTo(awayPoint);
+      const distance = homePoint.distanceTo(awayPoint) / 1000;
       const prominence = element.Height / distance;
 
-      if (distance < 10000 && distance > 0) {
+      if (distance < 100 && distance > 0) {
         const compassBearing = homePoint.bearingTo(awayPoint);
 
         orderedPeaks.push({
           Name: element['Hill Name'],
-          Distance: distance,
-          Bearing: compassBearing,
+          Distance: distance.toFixed(2),
+          Bearing: compassBearing.toFixed(2),
           Prominence: prominence,
         });
       }
