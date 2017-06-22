@@ -1,0 +1,15 @@
+#circle {
+  width: 100%;
+  padding-bottom: 100%;
+  border-radius: 50%;
+  background-color: grey;
+  border-color: 1px solid black;
+}
+
+.pointer {
+  /*-webkit-transform: rotate(45deg);*/
+  border: 1px solid black;
+  height: 100%;
+  width: 0%;
+}
+
