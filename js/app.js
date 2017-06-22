@@ -1,14 +1,4 @@
 $(document).ready(() => {
-  // Haversine distance calculation from https://github.com/dcousens/haversine-distance
-  const atan2 = Math.atan2;
-  const cos = Math.cos;
-  const sin = Math.sin;
-  const sqrt = Math.sqrt;
-  const PI = Math.PI;
-
-  // (mean) radius of Earth (meters)
-  const R = 6378137;
-
   function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
