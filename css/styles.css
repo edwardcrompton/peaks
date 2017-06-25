@@ -1,9 +1,16 @@
-#circle {
-  width: 100%;
-  padding-bottom: 100%;
+.compass-container {
+  min-height: 100vh;  
+}
+
+.compass-container, .compass {
+  display: flex;
+}
+
+.compass {
+  width: 100vmin;
+  height: 100vmin;
   border-radius: 50%;
-  background-color: grey;
-  border-color: 1px solid black;
+  border: 1px solid black;
 }
 
 .pointer {
