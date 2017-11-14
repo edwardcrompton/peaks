@@ -1,16 +1,12 @@
-.compass-container {
+.compass__container {
   min-height: 100vh;  
 }
 
-.compass-container, .compass {
-  display: flex;
+.compass__container, .compass__canvas {
 }
 
-.compass {
+.compass__canvas {
   width: 100vmin;
-  height: 100vmin;
-  border-radius: 50%;
-  border: 1px solid black;
 }
 
 .pointer {

@@ -8,8 +8,10 @@
 
   <script src="js/jquery.min.js"></script>
   <script src="js/vendor/geodesy/latlon-spherical.js"></script>
+  <script src="js/vendor/ocanvas/ocanvas-2.8.10.min.js"></script>
   <script src="js/geodata.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/compass.js"></script>
   
   <link rel="stylesheet" type="text/css" href="css/styles.css" />
   <title>Peaks</title>
@@ -29,7 +31,7 @@
     <input type="button" id="submitposition" value="Go">
   </form>
   
-  <table id="peakslist">
+  <table id="peakslist" class="list">
     <thead>
       <tr>
         <td>Name</td>
@@ -41,10 +43,8 @@
     
   </table>
   
-  <div class="compass-container">
-    <div class="compass">
-      <div class="pointer"></div>
-    </div>
+  <div class="compass__container">
+    <canvas id="peakscanvas" class="compass__canvas"></canvas>
   </div>  
   
 </body>
