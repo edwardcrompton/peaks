@@ -48,10 +48,12 @@ $(document).ready(() => {
 
     $.each(orderedPeaks, (index, element) => $('#peakslist tr:last').after(
       `<tr class="peakrow">
+        <td>${index}</td>
         <td>${element.Name}</td>
         <td>${element.Distance}</td>
         <td>${element.Bearing}</td>
-      </tr>`));
+      </tr>`
+    ));
   });
 
   $('#getlocation').click(() => {
