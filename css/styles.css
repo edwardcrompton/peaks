@@ -6,7 +6,7 @@
 }
 
 .compass__canvas {
-  width: 100vmin;
+  background-color: #444;
 }
 
 .pointer {

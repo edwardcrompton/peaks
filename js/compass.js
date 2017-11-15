@@ -1,33 +1,41 @@
-$(document).ready(() => {
-  var canvas = oCanvas.create({
-    canvas: "#peakscanvas",
-    background: "#222",
-  });
+/**
+ * Peaks display.
+ */
+function compass() {
+  canvas = $('canvas');
 
-  originX = canvas.width / 2;
-  originY = canvas.height / 2;
+  originX = canvas.width() / 2;
+  originY = canvas.height() / 2;
 
-  // Center planet
-  var center = canvas.display.ellipse({
+  canvas.drawPolygon({
+    draggable: true,
+    fillStyle: "#6c3",
     x: originX, y: originY,
-    radius: 1,
-    fill: "#f00"
-  }).add();
+    radius: 5, sides: 5
+  });
+};
 
-  // Prototype objects that will be used to instantiate the others
-  var peakProto = canvas.display.ellipse({
-    radius: 1,
-    fill: "#fff"
+function createPeak(index, bearing, distance) {
+  var pixelsPerKm = 10; // We need to calculate this from the canvas size.
+
+  bearing = bearing * Math.PI / 180;
+  $('canvas').drawArc({
+    strokeStyle: '#f00',
+    fillStyle: '#f00',
+    strokeWidth: 1,
+    x: originX + (distance * Math.sin(bearing) * pixelsPerKm),
+    y: originY - (distance * Math.cos(bearing) * pixelsPerKm),
+    radius: 2,
   });
 
-
-  function createPeak(bearing, distance) {
-    bearing = bearing * Math.PI / 180;
-    var peak = peakProto.clone({
-      x: originX + distance * Math.sin(bearing),
-      y: originY - distance * Math.cos(bearing),
-    });
-    peak.add();
-  }
-});
+  $('canvas').drawText({
+    fillStyle: '#fff',
+    strokeWidth: 1,
+    x: originX + (distance * Math.sin(bearing) * pixelsPerKm),
+    y: originY - (distance * Math.cos(bearing) * pixelsPerKm),
+    fontSize: '8pt',
+    fontFamily: 'Verdana, sans-serif',
+    text: index,
+  });
+}
 

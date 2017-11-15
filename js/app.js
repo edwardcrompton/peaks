@@ -3,6 +3,8 @@ $(document).ready(() => {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
 
+  compass();
+
   $('.position').change(() => $('#notices').html('Using a manually entered position.'));
 
   $('#submitposition').click(() => {
@@ -25,7 +27,7 @@ $(document).ready(() => {
     $.each(peaks, (index, element) => {
       const latitude = element.Latitude;
       const longitude = element.Longitude;
-      
+
       const homePoint = new LatLon(homeLatitude, homeLongitude);
       const awayPoint = new LatLon(latitude, longitude);
 
@@ -54,6 +56,10 @@ $(document).ready(() => {
         <td>${element.Bearing}</td>
       </tr>`
     ));
+
+    $.each(orderedPeaks, (index, element) => {
+      createPeak(index, element.Bearing, element.Distance);
+    })
   });
 
   $('#getlocation').click(() => {
