@@ -2,8 +2,9 @@ var data = [{
     type: 'scattergeo',
     mode: 'markers+text',
     marker: {
-        color: '#000000',
-    }
+        color: '#fff',
+    },
+    textposition: 'top right',
 }];
 
 var layout = {
@@ -11,23 +12,16 @@ var layout = {
     height: 700,
     font: {
         family: 'Droid Serif, serif',
-        size: 12
-    },
-    titlefont: {
-        size: 16
+        size: 16,
+        color: '#ccc',
     },
     geo: {
+        projection: {
+          scale: 1000,
+        },
+        bgcolor: '#333',
+        showcoastlines: true,
         scope: 'europe',
         resolution: 50,
-        lonaxis: {
-            'range': [-130, -60]
-        },
-        lataxis: {
-            'range': [40, 70]
-        },
-        showland: true,
-        projection: {
-          scale: 200,
-        }
     }
 };
