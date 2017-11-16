@@ -7,10 +7,11 @@ var data = [{
 }];
 
 var layout = {
-    title: '',
+    width: 700,
+    height: 700,
     font: {
         family: 'Droid Serif, serif',
-        size: 6
+        size: 12
     },
     titlefont: {
         size: 16
@@ -25,5 +26,8 @@ var layout = {
             'range': [40, 70]
         },
         showland: true,
+        projection: {
+          scale: 200,
+        }
     }
 };

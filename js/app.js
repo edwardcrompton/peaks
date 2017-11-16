@@ -22,10 +22,6 @@ $(document).ready(() => {
       $('#longitude').val(homeLongitude);
     }
 
-    var latitudes = new Array();
-    var longitudes = new Array();
-    var labels = new Array();
-
     $.each(peaks, (index, element) => {
       const latitude = element.Latitude;
       const longitude = element.Longitude;
@@ -44,23 +40,32 @@ $(document).ready(() => {
           Distance: distance.toFixed(2),
           Bearing: compassBearing.toFixed(2),
           Prominence: prominence,
+          lat: latitude,
+          lon: longitude,
         });
       }
-      latitudes.push(latitude);
-      longitudes.push(longitude);
-      labels.push(index);
     });
 
     orderedPeaks.sort((a, b) => b.Prominence - a.Prominence);
 
-    $.each(orderedPeaks, (index, element) => $('#peakslist tr:last').after(
-      `<tr class="peakrow">
-        <td>${index}</td>
-        <td>${element.Name}</td>
-        <td>${element.Distance}</td>
-        <td>${element.Bearing}</td>
-      </tr>`
-    ));
+    var latitudes = new Array();
+    var longitudes = new Array();
+    var labels = new Array();
+
+    $.each(orderedPeaks, function(index, element){
+      latitudes.push(element.lat);
+      longitudes.push(element.lon);
+      labels.push(index);
+
+      $('#peakslist tr:last').after(
+        `<tr class="peakrow">
+          <td>${index}</td>
+          <td>${element.Name}</td>
+          <td>${element.Distance}</td>
+          <td>${element.Bearing}</td>
+        </tr>`
+      );
+    });
 
     // Plot the peaks on the plotly chart.
     layout.geo.center = {
