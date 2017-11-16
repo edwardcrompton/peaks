@@ -3,8 +3,6 @@ $(document).ready(() => {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
 
-  compass();
-
   $('.position').change(() => $('#notices').html('Using a manually entered position.'));
 
   $('#submitposition').click(() => {
@@ -57,9 +55,13 @@ $(document).ready(() => {
       </tr>`
     ));
 
-    $.each(orderedPeaks, (index, element) => {
-      createPeak(index, element.Bearing, element.Distance);
-    })
+    // Plot the peaks on the plotly chart.
+    layout.geo.center = {
+      lon: homeLongitude,
+      lat: homeLatitude,
+    };
+
+    Plotly.newPlot('compass', data, layout);
   });
 
   $('#getlocation').click(() => {

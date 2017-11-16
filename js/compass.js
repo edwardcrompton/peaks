@@ -1,41 +1,53 @@
-/**
- * Peaks display.
- */
-function compass() {
-  canvas = $('canvas');
+var data = [{
+    type: 'scattergeo',
+    mode: 'markers+text',
+    text: [
+        'Montreal', 'Toronto', 'Vancouver', 'Calgary', 'Edmonton',
+        'Ottawa', 'Halifax', 'Victoria', 'Winnepeg', 'Regina'
+    ],
+    lon: [
+        -73.57, -79.24, -123.06, -114.1, -113.28,
+        -75.43, -63.57, -123.21, -97.13, -104.6, -4
+    ],
+    lat: [
+        45.5, 43.4, 49.13, 51.1, 53.34, 45.24,
+        44.64, 48.25, 49.89, 50.45, 54
+    ],
+    marker: {
+        size: 7,
+        color: [
+            '#bebada', '#fdb462', '#fb8072', '#d9d9d9', '#bc80bd',
+            '#b3de69', '#8dd3c7', '#80b1d3', '#fccde5', '#ffffb3'
+        ],
+        line: {
+            width: 1
+        }
+    },
+    name: 'Canadian cities',
+    textposition: [
+        'top right', 'top left', 'top center', 'bottom right', 'top right',
+        'top left', 'bottom right', 'bottom left', 'top right', 'top right'
+    ],
+}];
 
-  originX = canvas.width() / 2;
-  originY = canvas.height() / 2;
-
-  canvas.drawPolygon({
-    draggable: true,
-    fillStyle: "#6c3",
-    x: originX, y: originY,
-    radius: 5, sides: 5
-  });
+var layout = {
+    title: '',
+    font: {
+        family: 'Droid Serif, serif',
+        size: 6
+    },
+    titlefont: {
+        size: 16
+    },
+    geo: {
+        scope: 'europe',
+        resolution: 50,
+        lonaxis: {
+            'range': [-130, -60]
+        },
+        lataxis: {
+            'range': [40, 70]
+        },
+        showland: true,
+    }
 };
-
-function createPeak(index, bearing, distance) {
-  var pixelsPerKm = 10; // We need to calculate this from the canvas size.
-
-  bearing = bearing * Math.PI / 180;
-  $('canvas').drawArc({
-    strokeStyle: '#f00',
-    fillStyle: '#f00',
-    strokeWidth: 1,
-    x: originX + (distance * Math.sin(bearing) * pixelsPerKm),
-    y: originY - (distance * Math.cos(bearing) * pixelsPerKm),
-    radius: 2,
-  });
-
-  $('canvas').drawText({
-    fillStyle: '#fff',
-    strokeWidth: 1,
-    x: originX + (distance * Math.sin(bearing) * pixelsPerKm),
-    y: originY - (distance * Math.cos(bearing) * pixelsPerKm),
-    fontSize: '8pt',
-    fontFamily: 'Verdana, sans-serif',
-    text: index,
-  });
-}
-
