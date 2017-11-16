@@ -22,6 +22,10 @@ $(document).ready(() => {
       $('#longitude').val(homeLongitude);
     }
 
+    var latitudes = new Array();
+    var longitudes = new Array();
+    var labels = new Array();
+
     $.each(peaks, (index, element) => {
       const latitude = element.Latitude;
       const longitude = element.Longitude;
@@ -42,6 +46,9 @@ $(document).ready(() => {
           Prominence: prominence,
         });
       }
+      latitudes.push(latitude);
+      longitudes.push(longitude);
+      labels.push(index);
     });
 
     orderedPeaks.sort((a, b) => b.Prominence - a.Prominence);
@@ -60,6 +67,10 @@ $(document).ready(() => {
       lon: homeLongitude,
       lat: homeLatitude,
     };
+
+    data[0].lat = latitudes;
+    data[0].lon = longitudes;
+    data[0].text = labels;
 
     Plotly.newPlot('compass', data, layout);
   });
