@@ -10,27 +10,21 @@ See https://edwardcrompton.github.io/peaks
 Ideas for further development
 -----------------------------
 
-- Make the filtering and ordering of the listed peaks more intelligent, so that it lists the ones you are likely to be able to see from the specified latitube and longitude.
-- Create a graphic to show the distances and bearings of the peaks which can be used with a compass to orientate the mobile device.
+- Make the filtering and ordering of the listed peaks more intelligent, so that it lists the ones you are likely to be able to see from the specified latitude and longitude.
+- Create a graphic to show the distances and bearings of the peaks which can be used with a compass to orientate the mobile device. Carlos suggested d3 may be a good library for this https://github.com/d3/d3/wiki
 - Use the mobile device's inbuilt compass to align the graphic.
 - Present the names of the peaks on a camera overlay for an augmented reality experience.
 
 Current progress
 ----------------
 
-<<<<<<< HEAD
-Attempting to register a service worker in order to cache assets when offline. Currently when
-page is refreshed offline we get the downosaur shown instead of the app shell.
-=======
-There seems to be inaccuracies in the bearings as compared to those calculated 
-manually on an OS map, and at http://www.movable-type.co.uk/scripts/latlong.html
-it might be better to use the libraries here https://github.com/chrisveness/geodesy.
-These are the libraries that the moveabletype link uses. There's an Npm module.
+Now using the library https://github.com/chrisveness/geodesy as a git submodule.
+Hopefully this increases the accuracy of the bearings. Test with OS coordinates.
+http://www.movable-type.co.uk/scripts/latlong.html
 
 Service workers appear to work to cache and retrieve assets offline. Consider
 extending to automatically fetch new versions of assets:
 https://developers.google.com/web/fundamentals/getting-started/codelabs/your-first-pwapp/
->>>>>>> gh-pages
 
 Consider using RequireJS to provide a more module structure with multiple js files.
 

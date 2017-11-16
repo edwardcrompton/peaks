@@ -1,55 +1,6 @@
 $(document).ready(() => {
-  // Haversine distance calculation from https://github.com/dcousens/haversine-distance
-  const atan2 = Math.atan2;
-  const cos = Math.cos;
-  const sin = Math.sin;
-  const sqrt = Math.sqrt;
-  const PI = Math.PI;
-
-  // (mean) radius of Earth (meters)
-  const R = 6378137;
-
   function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
-  }
-
-  function squared(x) {
-    return x * x;
-  }
-  function toRad(x) {
-    return (x * PI) / 180.0;
-  }
-  function toDegree(x) {
-    return (x * 180) / PI;
-  }
-
-  // https://stackoverflow.com/questions/1502590/calculate-distance-between-two-points-in-google-maps-v3
-  function haversineDistance(a, b) {
-    const aLat = a.latitude || a.lat;
-    const bLat = b.latitude || b.lat;
-    const aLng = a.longitude || a.lng;
-    const bLng = b.longitude || b.lng;
-
-    const dLat = toRad(bLat - aLat);
-    const dLon = toRad(bLng - aLng);
-
-    const f = squared(sin(dLat / 2.0)) + (
-      cos(toRad(aLat)) * cos(toRad(bLat)) * squared(sin(dLon / 2.0))
-    );
-    const c = 2 * atan2(sqrt(f), sqrt(1 - f));
-
-    return Math.round((R * c) / 1000);
-  }
-
-  // Bearing calculation from https://stackoverflow.com/questions/11415106/issue-with-calcuating-compass-bearing-between-two-gps-coordinates#11415329
-  function bearing(lat1, lng1, lat2, lng2) {
-    const dLon = (lng2 - lng1);
-    const y = Math.sin(dLon) * Math.cos(lat2);
-    const x = (Math.cos(lat1) * Math.sin(lat2)) - (
-      Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon)
-    );
-    const brng = toDegree(Math.atan2(y, x));
-    return Math.round(360 - ((brng + 360) % 360));
   }
 
   $('.position').change(() => $('#notices').html('Using a manually entered position.'));
@@ -75,34 +26,58 @@ $(document).ready(() => {
       const latitude = element.Latitude;
       const longitude = element.Longitude;
 
-      const a = { latitude: homeLatitude, longitude: homeLongitude };
-      const b = { latitude, longitude };
+      const homePoint = new LatLon(homeLatitude, homeLongitude);
+      const awayPoint = new LatLon(latitude, longitude);
 
-      const distance = haversineDistance(a, b);
+      const distance = homePoint.distanceTo(awayPoint) / 1000;
       const prominence = element.Height / distance;
 
-      let compassBearing;
-
       if (distance < 100 && distance > 0) {
-        compassBearing = bearing(homeLatitude, homeLongitude, latitude, longitude);
+        const compassBearing = homePoint.bearingTo(awayPoint);
 
         orderedPeaks.push({
           Name: element['Hill Name'],
-          Distance: distance,
-          Bearing: compassBearing,
+          Distance: distance.toFixed(2),
+          Bearing: compassBearing.toFixed(2),
           Prominence: prominence,
+          lat: latitude,
+          lon: longitude,
         });
       }
     });
 
     orderedPeaks.sort((a, b) => b.Prominence - a.Prominence);
 
-    $.each(orderedPeaks, (index, element) => $('#peakslist tr:last').after(
-      `<tr class="peakrow">
-        <td>${element.Name}</td>
-        <td>${element.Distance}</td>
-        <td>${element.Bearing}</td>
-      </tr>`));
+    var latitudes = new Array();
+    var longitudes = new Array();
+    var labels = new Array();
+
+    $.each(orderedPeaks, function(index, element){
+      latitudes.push(element.lat);
+      longitudes.push(element.lon);
+      labels.push(index);
+
+      $('#peakslist tr:last').after(
+        `<tr class="peakrow">
+          <td>${index}</td>
+          <td>${element.Name}</td>
+          <td>${element.Distance}</td>
+          <td>${element.Bearing}</td>
+        </tr>`
+      );
+    });
+
+    // Plot the peaks on the plotly chart.
+    layout.geo.center = {
+      lon: homeLongitude,
+      lat: homeLatitude,
+    };
+
+    data[0].lat = latitudes;
+    data[0].lon = longitudes;
+    data[0].text = labels;
+
+    Plotly.newPlot('compass', data, layout);
   });
 
   $('#getlocation').click(() => {
