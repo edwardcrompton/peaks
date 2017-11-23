@@ -30,3 +30,11 @@ Try building in compass orientation so that we can see a graphical pointer to al
 the mountains.
 
 Work out how to show few mountains, and which to choose for the list.
+
+Libraries used
+--------------
+
+This libraries are included in the codebase:
+https://github.com/chrisveness/geodesy
+https://github.com/plotly/plotly.js
+jQuery
