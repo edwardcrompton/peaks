@@ -22,13 +22,12 @@ Now using the library https://github.com/chrisveness/geodesy as a git submodule.
 Hopefully this increases the accuracy of the bearings. Test with OS coordinates.
 http://www.movable-type.co.uk/scripts/latlong.html
 
+Need a marker in the centre of the graphic where the user is located.
+
+Optimise the graphic for mobile: Remove margins and make width responsive.
+
 Service workers appear to work to cache and retrieve assets offline. Consider
 extending to automatically fetch new versions of assets:
 https://developers.google.com/web/fundamentals/getting-started/codelabs/your-first-pwapp/
-
-Consider using RequireJS to provide a more module structure with multiple js files.
-
-Try building in compass orientation so that we can see a graphical pointer to all
-the mountains.
 
 Work out how to show few mountains, and which to choose for the list.
