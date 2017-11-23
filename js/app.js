@@ -77,7 +77,7 @@ $(document).ready(() => {
     data[0].lon = longitudes;
     data[0].text = labels;
 
-    Plotly.newPlot('compass', data, layout);
+    Plotly.newPlot('compass', data, layout, {displayModeBar: false});
   });
 
   $('#getlocation').click(() => {
