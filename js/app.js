@@ -73,6 +73,9 @@ $(document).ready(() => {
       lat: homeLatitude,
     };
 
+latitudes.push(homeLatitude);
+longitudes.push(homeLongitude);
+
     data[0].lat = latitudes;
     data[0].lon = longitudes;
     data[0].text = labels;
