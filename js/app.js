@@ -51,11 +51,13 @@ $(document).ready(() => {
     var latitudes = new Array();
     var longitudes = new Array();
     var labels = new Array();
+    var colours = new Array();
 
     $.each(orderedPeaks, function(index, element){
       latitudes.push(element.lat);
       longitudes.push(element.lon);
-      labels.push(index);
+      labels.push(index + 1);
+      colours.push('#fff');
 
       $('#peakslist tr:last').after(
         `<tr class="peakrow">
@@ -73,12 +75,15 @@ $(document).ready(() => {
       lat: homeLatitude,
     };
 
-latitudes.push(homeLatitude);
-longitudes.push(homeLongitude);
+    // Add a marker for the origin wheere the user is.
+    latitudes.push(homeLatitude);
+    longitudes.push(homeLongitude);
+    colours.push('#f00');
 
     data[0].lat = latitudes;
     data[0].lon = longitudes;
     data[0].text = labels;
+    data[0].marker.color = colours;
 
     Plotly.newPlot('compass', data, layout, {displayModeBar: false});
   });
