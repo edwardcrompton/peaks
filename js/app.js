@@ -6,6 +6,12 @@ $(document).ready(() => {
   $('.position').change(() => $('#notices').html('Using a manually entered position.'));
 
   $('#submitposition').click(() => {
+    var latitudes = new Array();
+    var longitudes = new Array();
+    var labels = new Array();
+    var colours = new Array();
+    var stripeclass;
+
     let homeLatitude = $('#latitude').val();
     let homeLongitude = $('#longitude').val();
 
@@ -48,20 +54,22 @@ $(document).ready(() => {
 
     orderedPeaks.sort((a, b) => b.Prominence - a.Prominence);
 
-    var latitudes = new Array();
-    var longitudes = new Array();
-    var labels = new Array();
-    var colours = new Array();
-
     $.each(orderedPeaks, function(index, element){
       latitudes.push(element.lat);
       longitudes.push(element.lon);
       labels.push(index + 1);
       colours.push('#fff');
 
+      if (index % 2) {
+        stripeclass = 'odd';
+      }
+      else {
+        stripeclass = 'even';
+      }
+
       $('#peakslist tr:last').after(
-        `<tr class="peakrow">
-          <td>${index}</td>
+        `<tr class="peakrow ${stripeclass}">
+          <td>${index + 1}</td>
           <td>${element.Name}</td>
           <td>${element.Distance}</td>
           <td>${element.Bearing}</td>
