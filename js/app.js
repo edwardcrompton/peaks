@@ -10,6 +10,8 @@ $(document).ready(() => {
     var longitudes = new Array();
     var labels = new Array();
     var colours = new Array();
+    var symbols = new Array();
+    var sizes = new Array();
     var stripeclass;
 
     let homeLatitude = $('#latitude').val();
@@ -59,6 +61,8 @@ $(document).ready(() => {
       longitudes.push(element.lon);
       labels.push(index + 1);
       colours.push('#fff');
+      symbols.push('circle');
+      sizes.push(6);
 
       if (index % 2) {
         stripeclass = 'odd';
@@ -83,15 +87,19 @@ $(document).ready(() => {
       lat: homeLatitude,
     };
 
-    // Add a marker for the origin wheere the user is.
+    // Add a marker for the origin where the user is.
     latitudes.push(homeLatitude);
     longitudes.push(homeLongitude);
     colours.push('#f00');
+    symbols.push('cross');
+    sizes.push(10);
 
     data[0].lat = latitudes;
     data[0].lon = longitudes;
     data[0].text = labels;
     data[0].marker.color = colours;
+    data[0].marker.size = sizes;
+    data[0].marker.symbol = symbols;
 
     Plotly.newPlot('compass', data, layout, {displayModeBar: false});
   });

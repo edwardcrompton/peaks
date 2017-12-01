@@ -2,7 +2,9 @@ var data = [{
     type: 'scattergeo',
     mode: 'markers+text',
     marker: {
-        color: ['#f00', '#fff', '#fff'],
+      line: {
+        width: 1,
+      }
     },
     textposition: 'top right',
 }];
