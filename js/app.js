@@ -117,8 +117,8 @@ $(document).ready(() => {
           $('#notices').html(`An error occured. Error code: ${error.code}`);
         },
         (options) => {
-          maximumAge: 5 * 60 * 1000;
-          timeout: 10 * 1000;
+          maximumAge: 0; // Always get latest position
+          timeout: 5000; // 5 seconds
         }
       );
     }
