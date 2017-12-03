@@ -114,7 +114,7 @@ $(document).ready(() => {
           $('#notices').html(`Using your location with an accuracy of ${position.coords.accuracy}m.`);
         },
         (error) => {
-          $('#notices').html('An error occured. Error code: ${error.code}');
+          $('#notices').html(`An error occured. Error code: ${error.code}`);
         },
         (options) => {
           maximumAge: 5 * 60 * 1000;
