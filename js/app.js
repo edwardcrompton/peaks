@@ -107,14 +107,20 @@ $(document).ready(() => {
   $('#getlocation').click(() => {
     // Geolocation function from https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        $('#latitude').val(position.coords.latitude);
-        $('#longitude').val(position.coords.longitude);
-        $('#notices').html(`Using your location with an accuracy of ${position.coords.accuracy}m.`);
-      },
-      (error) => {
-        $('#notices').html(`An error occured. Error code: ${error.code}`);
-      }, { enableHighAccuracy: true });
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          $('#latitude').val(position.coords.latitude);
+          $('#longitude').val(position.coords.longitude);
+          $('#notices').html(`Using your location with an accuracy of ${position.coords.accuracy}m.`);
+        },
+        (error) => {
+          $('#notices').html('An error occured. Error code: ${error.code}');
+        },
+        (options) => {
+          maximumAge: 5 * 60 * 1000;
+          timeout: 10 * 1000;
+        }
+      );
     }
     else {
       $('#notices').html('Geolocation is not supported by this browser.');
