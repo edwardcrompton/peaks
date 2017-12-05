@@ -1,0 +1,21 @@
+.compass__container {
+  min-height: 100vh;  
+}
+
+.compass__container, .compass__canvas {
+}
+
+.compass__canvas {
+  background-color: #444;
+}
+
+.pointer {
+  transform-origin: 0% 100%;
+  transform: rotate(0deg);
+  border: 1px solid black;
+  height: 50%;
+  width: 0%;
+  position: relative;
+  left: 50%;
+}
+
