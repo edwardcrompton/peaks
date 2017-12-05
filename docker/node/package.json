@@ -1,0 +1,17 @@
+{
+  "name": "peaks",
+  "version": "0.1.0",
+  "description": "Showing mountain peaks in your vicinity.",
+  "devDependencies": {
+    "gulp": "^3.9.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwardcrompton/peaks"
+  },
+  "author": "Ed Crompton",
+  "bugs": {
+    "url": "https://github.com/edwardcrompton/peaks/issues"
+  },
+  "homepage": "https://edwardcrompton.github.io/peaks"
+}

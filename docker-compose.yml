@@ -4,3 +4,8 @@ web:
    - ./web:/usr/share/nginx/html
   ports:
    - "8080:80"
+
+node:
+  build: docker/node
+  volumes:
+   - .:/src
