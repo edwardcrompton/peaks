@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "Showing mountain peaks in your vicinity.",
   "devDependencies": {
-    "gulp": "^3.9.x"
+    "gulp": "^3.9.x",
+    "sw-precache": "^5"
   },
   "repository": {
     "type": "git",
