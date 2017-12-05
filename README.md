@@ -31,3 +31,11 @@ extending to automatically fetch new versions of assets:
 https://developers.google.com/web/fundamentals/getting-started/codelabs/your-first-pwapp/
 
 Work out how to show few mountains, and which to choose for the list.
+
+Libraries used
+--------------
+
+This libraries are included in the codebase:
+https://github.com/chrisveness/geodesy
+https://github.com/plotly/plotly.js
+jQuery

@@ -6,6 +6,14 @@ $(document).ready(() => {
   $('.position').change(() => $('#notices').html('Using a manually entered position.'));
 
   $('#submitposition').click(() => {
+    var latitudes = new Array();
+    var longitudes = new Array();
+    var labels = new Array();
+    var colours = new Array();
+    var symbols = new Array();
+    var sizes = new Array();
+    var stripeclass;
+
     let homeLatitude = $('#latitude').val();
     let homeLongitude = $('#longitude').val();
 
@@ -48,18 +56,24 @@ $(document).ready(() => {
 
     orderedPeaks.sort((a, b) => b.Prominence - a.Prominence);
 
-    var latitudes = new Array();
-    var longitudes = new Array();
-    var labels = new Array();
-
     $.each(orderedPeaks, function(index, element){
       latitudes.push(element.lat);
       longitudes.push(element.lon);
-      labels.push(index);
+      labels.push(index + 1);
+      colours.push('#fff');
+      symbols.push('circle');
+      sizes.push(6);
+
+      if (index % 2) {
+        stripeclass = 'odd';
+      }
+      else {
+        stripeclass = 'even';
+      }
 
       $('#peakslist tr:last').after(
-        `<tr class="peakrow">
-          <td>${index}</td>
+        `<tr class="peakrow ${stripeclass}">
+          <td>${index + 1}</td>
           <td>${element.Name}</td>
           <td>${element.Distance}</td>
           <td>${element.Bearing}</td>
@@ -73,24 +87,40 @@ $(document).ready(() => {
       lat: homeLatitude,
     };
 
+    // Add a marker for the origin where the user is.
+    latitudes.push(homeLatitude);
+    longitudes.push(homeLongitude);
+    colours.push('#f00');
+    symbols.push('cross');
+    sizes.push(10);
+
     data[0].lat = latitudes;
     data[0].lon = longitudes;
     data[0].text = labels;
+    data[0].marker.color = colours;
+    data[0].marker.size = sizes;
+    data[0].marker.symbol = symbols;
 
-    Plotly.newPlot('compass', data, layout);
+    Plotly.newPlot('compass', data, layout, {displayModeBar: false});
   });
 
   $('#getlocation').click(() => {
     // Geolocation function from https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        $('#latitude').val(position.coords.latitude);
-        $('#longitude').val(position.coords.longitude);
-        $('#notices').html(`Using your location with an accuracy of ${position.coords.accuracy}m.`);
-      },
-      (error) => {
-        $('#notices').html(`An error occured. Error code: ${error.code}`);
-      }, { enableHighAccuracy: true });
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          $('#latitude').val(position.coords.latitude);
+          $('#longitude').val(position.coords.longitude);
+          $('#notices').html(`Using your location with an accuracy of ${position.coords.accuracy}m.`);
+        },
+        (error) => {
+          $('#notices').html(`An error occured. Error code: ${error.code}`);
+        },
+        (options) => {
+          maximumAge: 0; // Always get latest position
+          timeout: 5000; // 5 seconds
+        }
+      );
     }
     else {
       $('#notices').html('Geolocation is not supported by this browser.');

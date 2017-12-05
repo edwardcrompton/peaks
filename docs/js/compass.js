@@ -2,14 +2,14 @@ var data = [{
     type: 'scattergeo',
     mode: 'markers+text',
     marker: {
-        color: '#fff',
+      line: {
+        width: 1,
+      }
     },
     textposition: 'top right',
 }];
 
 var layout = {
-    width: 700,
-    height: 700,
     font: {
         family: 'Droid Serif, serif',
         size: 16,
@@ -23,5 +23,8 @@ var layout = {
         showcoastlines: true,
         scope: 'europe',
         resolution: 50,
+    },
+    margin: {                           // update the left, bottom, right, top margin
+        l: 0, b: 0, r: 0, t: 0
     }
 };
