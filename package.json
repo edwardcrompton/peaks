@@ -4,7 +4,7 @@
   "description": "Showing mountain peaks in your vicinity.",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "sw-precache": "^5"
+    "sw-precache": "^5.2.0"
   },
   "repository": {
     "type": "git",
