@@ -7,5 +7,6 @@ web:
 
 node:
   build: docker/node
+  command: npm install
   volumes:
-   - .:/app
+   - .:/src
