@@ -7,6 +7,17 @@ Designed to run off line as a Progressive Web App on a mobile device.
 
 See https://edwardcrompton.github.io/peaks
 
+Service Worker
+--------------
+
+There's now a dockerised gulp process that compiles the service worker for us. The application can also be hosted locally using an nginx server in docker.
+
+Start the environment running on localhost:8080:
+> docker-compose up -d
+
+When the service worker needs recompiling:
+> docker-compose run node gulp
+
 Ideas for further development
 -----------------------------
 
