@@ -1,5 +1,6 @@
 // require(d) gulp for compatibility with sublime-gulp.
 var gulp = require('gulp');
+var sass = require('gulp-sass');
 
 gulp.task('generate-service-worker', function(callback) {
   var path = require('path');
@@ -12,4 +13,10 @@ gulp.task('generate-service-worker', function(callback) {
   }, callback);
 });
 
-gulp.task('default', ['generate-service-worker']);
+gulp.task('sass', function () {
+  return gulp.src('./web/styles/sass/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./web/styles/css'));
+});
+
+gulp.task('default', ['sass', 'generate-service-worker']);
