@@ -6,6 +6,6 @@ RUN mkdir /app
 WORKDIR /src
 COPY package*.json ./
 RUN npm install gulp -g
-RUN npm install
 
 WORKDIR /app
+RUN npm install
