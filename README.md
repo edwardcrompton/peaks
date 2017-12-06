@@ -26,6 +26,12 @@ Ideas for further development
 - Use the mobile device's inbuilt compass to align the graphic.
 - Present the names of the peaks on a camera overlay for an augmented reality experience.
 
+Git management
+--------------
+
+- Work currently goes on in the master branch. However, because the web root is not the same as the git root, we need to push separately to the gh-pages branch:
+> git subtree push --prefix web origin gh-pages
+
 Current progress
 ----------------
 
