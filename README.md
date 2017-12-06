@@ -34,6 +34,9 @@ Git management
 
 Current progress
 ----------------
+Chrome on Android shows the browser toolbar and greys out the form controls when in aeroplane mode. Find out why.
+
+Prettify the form controls.
 
 Now using the library https://github.com/chrisveness/geodesy as a git submodule.
 Hopefully this increases the accuracy of the bearings. Test with OS coordinates.
