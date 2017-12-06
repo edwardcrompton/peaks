@@ -24,16 +24,18 @@
   </header>
   <main class="main">
     <div class="card">
-      <form>
-        Latitude: <input type="text" id="latitude" class="position">
+      <form class="form">
+        <label for="latitude" class="form__label">Latitude</label>
+        <input type="text" id="latitude" class="position form__input">
         <br>
-        Longitude: <input type="text" id="longitude" class="position">
+        <label for="longitude" class="form__label">Longitude</label>
+        <input type="text" id="longitude" class="position form__input">
         <br>
-        <span id="notices"></span>
+        <span id="notices" class="form__notices"></span>
         <br>
 
-        <input type="button" id="getlocation" value="Use your location">
-        <input type="button" id="submitposition" value="Go">
+        <input type="button" id="getlocation" value="Use your location" class="form__button">
+        <input type="button" id="submitposition" value="Go" class="form__button">
       </form>
     </div>
 
