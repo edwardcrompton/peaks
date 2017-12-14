@@ -8,8 +8,14 @@ gulp.task('generate-service-worker', function(callback) {
   var rootDir = 'web';
 
   swPrecache.write(path.join(rootDir, 'service-worker.js'), {
-    staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif}'],
-    stripPrefix: rootDir
+    staticFileGlobs: [
+      rootDir + '/index.html',
+      rootDir + '/js/*.js',
+      rootDir + '/styles/css/*.css',
+      rootDir + '/js/geodesy/latlon-spherical.js',
+    ],
+    stripPrefix: rootDir,
+    maximumFileSizeToCacheInBytes: 3145728
   }, callback);
 });
 
