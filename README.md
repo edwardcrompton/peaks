@@ -18,6 +18,8 @@ Start the environment running on localhost:8080:
 When the service worker needs recompiling:
 > docker-compose run node gulp
 
+The service worker wasn't working on github pages - it seemed to not load from the cache when offline. I think this was because the app was in a subfolder. I've since deployed to Heroku and the page seems to work correctly offline. Try on a phone using airplane mode.
+
 Ideas for further development
 -----------------------------
 
@@ -47,6 +49,8 @@ Once the nginx container is on Drupal I think we can use it to server our js app
 The dir structure seems to require that a Dockerfile for the image we wnat to push to Heroku is in the root of the application directory. Other Dockerfiles for other docker containers can be elsewhere in the docker/ folder.
 
 The example from the link seems to just use nginx to proxy the example.com domain. We actually want to serve our own content.
+
+
 
 Current progress
 ----------------
