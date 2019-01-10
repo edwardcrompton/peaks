@@ -47,7 +47,7 @@ var ignoreUrlParametersMatching = [/^utm_/];
 
 var addDirectoryIndex = function (originalUrl, index) {
     var url = new URL(originalUrl);
-    if (url.pathname.slice(-1) === '/') {
+    if (url.pathname.slice(-1) === '/peak/') {
       url.pathname += index;
     }
     return url.toString();
