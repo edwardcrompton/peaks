@@ -32,6 +32,22 @@ Git management
 - Work currently goes on in the master branch. However, because the web root is not the same as the git root, we need to push separately to the gh-pages branch:
 > git subtree push --prefix web origin gh-pages
 
+Docker management
+-----------------
+
+I've been experimenting with deploying to Heroku using docker.
+The docker-compose.yml file is still valid for running the application in development. This has an nginx container and a node container. The node container is only required for updating development dependencies and packaging everything up.
+
+This talks about how to deploy an nginx container to heroku:
+
+https://ntotten.com/2018/07/22/nginx-on-heroku/
+
+Once the nginx container is on Drupal I think we can use it to server our js app.
+
+The dir structure seems to require that a Dockerfile for the image we wnat to push to Heroku is in the root of the application directory. Other Dockerfiles for other docker containers can be elsewhere in the docker/ folder.
+
+The example from the link seems to just use nginx to proxy the example.com domain. We actually want to serve our own content.
+
 Current progress
 ----------------
 Chrome on Android shows the browser toolbar and greys out the form controls when in aeroplane mode. Find out why.

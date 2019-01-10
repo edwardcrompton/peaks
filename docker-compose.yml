@@ -1,5 +1,5 @@
 web:
-  image: nginx
+  image: .
   volumes:
    - ./web:/usr/share/nginx/html
   ports:
