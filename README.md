@@ -7,6 +7,46 @@ Designed to run off line as a Progressive Web App on a mobile device.
 
 See https://edwardcrompton.github.io/peaks
 
+Local development setup
+-----------------------
+
+You need to have docker and docker-compose installed locally to run the docker stack.
+
+Clone the repository from github:
+
+> git clone git@github.com:edwardcrompton/peaks.git
+
+Change directory into the app:
+
+> cd peaks
+
+Start the app docker containers
+
+> docker-compose up -d
+
+You should now be able to access the app at http://localhost:8080
+
+Deploying to Heroku
+-------------------
+
+You'll need the heroku CLI installed and a heroku app already created in your heroku account to use the commands below:
+
+Build the docker web container:
+
+> docker build -t web .
+
+Push the web container to Heroku:
+
+> heroku container:push web --app <APPNAME>
+
+Release the web container on Heroku:
+
+> heroku container:release web --app <APPNAME>
+
+Open the app in your browser:
+
+> heroku open --app ebwc-peaks
+
 Service Worker
 --------------
 
@@ -23,6 +63,7 @@ The service worker wasn't working on github pages - it seemed to not load from t
 Ideas for further development
 -----------------------------
 
+- It should be possible to run the application from github pages instead of Heroku. There should be a way of configuring the service worker so that the application will run from a subdirectory of the domain. The advantage of Heroku is that the workflow can be entirely docker based. However, the free Heroku account sleeps after 30 minutes.
 - Make the filtering and ordering of the listed peaks more intelligent, so that it lists the ones you are likely to be able to see from the specified latitude and longitude.
 - Create a graphic to show the distances and bearings of the peaks which can be used with a compass to orientate the mobile device. Carlos suggested d3 may be a good library for this https://github.com/d3/d3/wiki
 - Use the mobile device's inbuilt compass to align the graphic.
