@@ -1,5 +1,6 @@
 {
   "name": "Peaks",
+  "short_name": "Peaks",
   "start_url": "index.html",
   "display": "standalone",
   "orientation": "landscape"
