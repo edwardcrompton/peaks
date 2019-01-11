@@ -1,12 +1,16 @@
-web:
-  image: .
-  volumes:
-   - ./web:/usr/share/nginx/html
-  ports:
-   - "8080:80"
+version: '2'
+services:
+  web:
+    build: .
+    volumes:
+     - ./web:/usr/share/nginx/html
+    ports:
+     - "8080:80"
+    environment:
+      PORT: 80
 
-node:
-  build: docker/node
-  command: npm install
-  volumes:
-   - .:/src
+  node:
+    build: docker/node
+    command: npm install
+    volumes:
+     - .:/src
