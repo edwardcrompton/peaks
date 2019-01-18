@@ -10,7 +10,8 @@ See https://edwardcrompton.github.io/peaks
 Local development setup
 -----------------------
 
-You need to have docker and docker-compose installed locally to run the docker stack.
+You need to have docker and docker-compose installed locally to run the docker
+stack.
 
 Clone the repository from github:
 
@@ -29,28 +30,22 @@ You should now be able to access the app at http://localhost:8080
 Deploying to Heroku
 -------------------
 
-You'll need the heroku CLI installed and a heroku app already created in your heroku account to use the commands below:
+You'll need the heroku CLI installed and a heroku app already created in your 
+Heroku account to use the bash script for deploying to Heroku.
 
-Build the docker web container:
+From the root folder of the code base, run this:
 
-> docker build -t web .
+> ./deploy-to-heroku.sh
 
-Push the web container to Heroku:
-
-> heroku container:push web --app <APPNAME>
-
-Release the web container on Heroku:
-
-> heroku container:release web --app <APPNAME>
-
-Open the app in your browser:
-
-> heroku open --app ebwc-peaks
+This will build a Docker container with all the code dependencies, push it to
+Heroku and then open the Heroku app page in your browser. You will need to edit
+the bash script to use the app name you created in Heroku.
 
 Service Worker
 --------------
 
-There's now a dockerised gulp process that compiles the service worker for us. The application can also be hosted locally using an nginx server in docker.
+There's now a dockerised gulp process that compiles the service worker for us.
+The application can also be hosted locally using an nginx server in docker.
 
 Start the environment running on localhost:8080:
 > docker-compose up -d
@@ -58,22 +53,20 @@ Start the environment running on localhost:8080:
 When the service worker needs recompiling:
 > docker-compose run node gulp
 
-The service worker wasn't working on github pages - it seemed to not load from the cache when offline. I think this was because the app was in a subfolder. I've since deployed to Heroku and the page seems to work correctly offline. Try on a phone using airplane mode.
+The service worker wasn't working on github pages - it seemed to not load from
+the cache when offline. I think this was because the app was in a subfolder.
+I've since deployed to Heroku and the page seems to work correctly offline. Try
+on a phone using airplane mode.
 
 Ideas for further development
 -----------------------------
 
+- Set up some CI and automated testing. Try this: https://www.sitepoint.com/testing-javascript-jasmine-travis-karma/
 - It should be possible to run the application from github pages instead of Heroku. There should be a way of configuring the service worker so that the application will run from a subdirectory of the domain. The advantage of Heroku is that the workflow can be entirely docker based. However, the free Heroku account sleeps after 30 minutes.
 - Make the filtering and ordering of the listed peaks more intelligent, so that it lists the ones you are likely to be able to see from the specified latitude and longitude.
 - Create a graphic to show the distances and bearings of the peaks which can be used with a compass to orientate the mobile device. Carlos suggested d3 may be a good library for this https://github.com/d3/d3/wiki
 - Use the mobile device's inbuilt compass to align the graphic.
 - Present the names of the peaks on a camera overlay for an augmented reality experience.
-
-Git management
---------------
-
-- Work currently goes on in the master branch. However, because the web root is not the same as the git root, we need to push separately to the gh-pages branch:
-> git subtree push --prefix web origin gh-pages
 
 Docker management
 -----------------
@@ -85,12 +78,15 @@ This talks about how to deploy an nginx container to heroku:
 
 https://ntotten.com/2018/07/22/nginx-on-heroku/
 
-Once the nginx container is on Drupal I think we can use it to server our js app.
+Once the nginx container is on Drupal I think we can use it to server our js
+app.
 
-The dir structure seems to require that a Dockerfile for the image we wnat to push to Heroku is in the root of the application directory. Other Dockerfiles for other docker containers can be elsewhere in the docker/ folder.
+The dir structure seems to require that a Dockerfile for the image we want to
+push to Heroku is in the root of the application directory. Other Dockerfiles
+for other docker containers can be elsewhere in the docker/ folder.
 
-The example from the link seems to just use nginx to proxy the example.com domain. We actually want to serve our own content.
-
+The example from the link seems to just use nginx to proxy the example.com
+domain. We actually want to serve our own content.
 
 
 Current progress
