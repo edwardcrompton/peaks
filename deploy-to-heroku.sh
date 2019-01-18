@@ -8,6 +8,7 @@
 # The name of the app on Heroku
 APP_NAME='ebwc-peaks'
 
+docker build -t web .
 heroku container:push web --app "$APP_NAME"
 heroku container:release web --app "$APP_NAME"
 heroku open --app "$APP_NAME"
