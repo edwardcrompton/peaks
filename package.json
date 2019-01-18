@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "description": "Showing mountain peaks in your vicinity.",
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-cli": "^1.4.0",
+    "gulp": "^4.0.0",
+    "gulp-cli": "^2.0.1",
     "gulp-sass": "^3.2.1",
+    "karma": "^3.1.4",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-jasmine": "^2.0.1",
     "sw-precache": "^5.2.1"
   },
   "repository": {
