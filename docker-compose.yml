@@ -19,5 +19,5 @@ services:
     build: docker/compass
     command: watch --poll /src
     volumes:
-      - ./web/styles:/src
+      - .:/src
 

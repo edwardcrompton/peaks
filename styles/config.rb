@@ -17,8 +17,8 @@ firesass = false
 
 
 # Location of the theme's resources.
-css_dir         = "css"
-sass_dir        = "sass"
+css_dir         = "web/css"
+sass_dir        = "styles/sass"
 extensions_dir  = "sass-extensions"
 
 # Require any additional compass plugins installed on your system.
