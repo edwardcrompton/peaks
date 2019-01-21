@@ -53,6 +53,12 @@ Start the environment running on localhost:8080:
 When the service worker needs recompiling:
 > docker-compose run node gulp
 
+Gulp also recompiles the Sass, but we now have a separate compass container
+that does this on the fly. Consider removing this runner from the gulpfile.js.
+
+The gulp container currenty seems to be broken. Fix the error thrown when
+running the command above.
+
 The service worker wasn't working on github pages - it seemed to not load from
 the cache when offline. I think this was because the app was in a subfolder.
 I've since deployed to Heroku and the page seems to work correctly offline. Try
