@@ -570,7 +570,6 @@ button::-moz-focus-inner {
 .header__logo {
   width: 40px;
   height: 40px;
-  border: 1px solid red;
 }
 
 @media (min-width: 600px) {
