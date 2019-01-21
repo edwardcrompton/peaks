@@ -68,6 +68,11 @@
   flex: 1;
 }
 
+.header__logo {
+  width: 40px;
+  height: 40px;
+}
+
 @media(min-width: 600px) {
   .header {
     padding: 16px 32px 0 24px;

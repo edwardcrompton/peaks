@@ -14,3 +14,10 @@ services:
     command: npm install
     volumes:
      - .:/src
+
+  compass:
+    build: docker/compass
+    command: watch --poll /src
+    volumes:
+      - ./web/styles:/src
+
