@@ -21,9 +21,9 @@ gulp.task('generate-service-worker', function(callback) {
 });
 
 gulp.task('sass', function () {
-  return gulp.src('./web/styles/sass/**/*.scss')
+  return gulp.src('./styles/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./web/styles/css'));
+    .pipe(gulp.dest('./web/css'));
 });
 
 gulp.task('default', ['sass', 'generate-service-worker']);
