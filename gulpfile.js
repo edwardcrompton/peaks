@@ -10,7 +10,6 @@ gulp.task('generate-service-worker', function(callback) {
   swPrecache.write(path.join(rootDir, 'service-worker.js'), {
     staticFileGlobs: [
       rootDir + '/index.html',
-      rootDir + '/manifest.json',
       rootDir + '/js/*.js',
       rootDir + '/images/icon-192.png',
       rootDir + '/css/*.css',
