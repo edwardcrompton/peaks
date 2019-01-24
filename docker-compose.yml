@@ -11,13 +11,7 @@ services:
 
   node:
     build: docker/node
-    command: npm install
+    command: gulp
     volumes:
      - .:/src
-
-  compass:
-    build: docker/compass
-    command: watch --poll /src
-    volumes:
-      - .:/src
 
