@@ -26,4 +26,8 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./web/css'));
 });
 
-gulp.task('default', ['sass', 'generate-service-worker']);
+// Watch task
+gulp.task('default', function() {
+  gulp.watch('./styles/sass/**/*.scss', ['sass']);
+});
+
