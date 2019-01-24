@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/index.html","616dee3809dbbca6306b00c4ab657dda"],["/js/app.js","6ca502c5a508e8dc57a4bc5475c8cf82"],["/js/compass.js","028873385a145e8395f7c303f3101ac8"],["/js/geodata.js","cc24da57217e14b51c8dbcffb1bcaff6"],["/js/geodesy/latlon-spherical.js","d5c7a968a098695722a2b5247b283148"],["/js/jquery.min.js","c9f5aeeca3ad37bf2aa006139b935f0a"],["/js/plotly-latest.min.js","adc89fbc14625411fd1e109c93c59372"],["/styles/css/core.css","2f46c5468a722f920f31d4ecd9493f53"],["/styles/css/styles.css","42bf017d4d11070a47a4d1800617bfa0"]];
+var precacheConfig = [["/css/core.css","3749ffd05a0cf704ef79645eb1e22079"],["/css/styles.css","42bf017d4d11070a47a4d1800617bfa0"],["/images/icon-192.png","dd0d44626720c4c03ef15e61134a93db"],["/index.html","735cdfe9bd9c77c827a62677313b2d6b"],["/js/app.js","6ca502c5a508e8dc57a4bc5475c8cf82"],["/js/compass.js","028873385a145e8395f7c303f3101ac8"],["/js/geodata.js","cc24da57217e14b51c8dbcffb1bcaff6"],["/js/geodesy/latlon-spherical.js","d5c7a968a098695722a2b5247b283148"],["/js/jquery.min.js","c9f5aeeca3ad37bf2aa006139b935f0a"],["/js/plotly-latest.min.js","adc89fbc14625411fd1e109c93c59372"]];
 var cacheName = 'sw-precache-v3--' + (self.registration ? self.registration.scope : '');
 
 
