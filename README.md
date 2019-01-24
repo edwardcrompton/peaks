@@ -7,7 +7,7 @@ the peak to its distance away.
 
 Designed to run off line as a Progressive Web App on a mobile device.
 
-See https://edwardcrompton.github.io/peaks
+See https://ebwc-peaks.herokuapp.com/
 
 Local development setup
 -----------------------
