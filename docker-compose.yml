@@ -10,8 +10,11 @@ services:
       PORT: 80
 
   node:
-    build: docker/node
-    command: gulp
+    image: node:carbon
+    working_dir: /app
+    environment:
+      - NODE_ENV=develop
     volumes:
-     - .:/src
+     - .:/app
+    command: "./docker/node/gulp-start.sh"
 

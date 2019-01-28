@@ -28,6 +28,6 @@ gulp.task('sass', function () {
 
 // Watch task
 gulp.task('default', function() {
-  gulp.watch('./styles/sass/**/*.scss', ['sass']);
+  gulp.watch('./styles/sass/**/*.scss', gulp.parallel('sass'));
 });
 
