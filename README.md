@@ -42,7 +42,7 @@ Gulp will watch the sass folder and recompile the css folder (inside the web
 root) automatically as long as the Docker containers are running.
 
 When the service worker needs recompiling this has to be triggered manually:
-> docker-compose run node gulp generate-service-worker
+> docker-compose exec node gulp generate-service-worker
 
 Deploying to Heroku
 -------------------
