@@ -1,11 +1,12 @@
 Peaks
 =====
 
-Shows the distance and bearing of peaks that can be seen from a particular
-latitude and longitude. The results are ordered by the ratio of the height of
-the peak to its distance away.
+Shows the distance and bearing of mountains in Wales that can be seen from a
+particular latitude and longitude. The results are ordered by the ratio of the
+height of the mountain to its distance away, giving some idea of its
+visibility from the ground.
 
-Designed to run off line as a Progressive Web App on a mobile device.
+Designed to run offline as a Progressive Web App on a mobile device.
 
 See https://ebwc-peaks.herokuapp.com/
 
@@ -32,7 +33,7 @@ You should now be able to access the app at http://localhost:8080
 Gulp tasks for Sass and Service Worker
 --------------------------------------
 
-Gulp is installed in its down Docker container in order to partly automate the
+Gulp is installed in its own Docker container in order to partly automate the
 compilation of Sass and recreation of the service worker.
 
 If it's not running already, start the environment running on localhost:8080
@@ -47,7 +48,7 @@ When the service worker needs recompiling this has to be triggered manually:
 Deploying to Heroku
 -------------------
 
-You'll need the heroku CLI installed and a heroku app already created in your
+You'll need the Heroku CLI installed and a heroku app already created in your
 Heroku account to use the bash script for deploying to Heroku.
 
 From the root folder of the code base, run this:
